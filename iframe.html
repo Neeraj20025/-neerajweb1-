@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @keyframes blink {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    #logo {
+        margin: 10px;
+        font-size: 50px;
+        color: rgb(0, 76, 255);
+        animation: blink 1.5s linear infinite alternate;
+        text-align: center;
+    }
+
+    #main {
+        width: 70%;
+        margin: auto;
+        text-align: center;
+
+    }
+
+    #menu {
+        float: left;
+    }
+    #map1{
+        width: 40%;
+        font-size: 35px; 
+    }
+    #menu 
+    {
+        color: rgb(0, 0, 0);
+        text-size-adjust:10;
+    }
+  
+
+
+</style>
+
+<body style="background-color: rgb(252, 241, 175);">
+    <div id="logo"> IFRAME </div>
+    <div id="menu">
+        <ol>
+            <li><a href="index.html" target="myframe">Home</a></li>
+            <li><a href="list.html" target="myframe">List</a></li>
+            <li><a href="photo web.html" target="myframe">Photo</a></li>
+            <li><a href="Table.html" target="myframe">Table</a></li>
+            <li><a href="shopping site.html" target="myframe">Shopping</a></li>
+        </ol>
+    </div>
+
+    <div id="main">
+        <iframe name="myframe" src="div2.html" style="width:700px;height:500px;" frameboder="0">
+
+            your browser dose not support....iframe...
+        </iframe>
+    </div>
+    <div id="map1"><b></h1>Embed maps </b></h1></div>
+        <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24572.364992862844!2d77.15403543513075!3d28.691997033925304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0214d7f5bea1%3A0x4704b7ef4b09ac43!2sAshok%20Vihar%2C%20Delhi!5e1!3m2!1sen!2sin!4v1760503239780!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="text"><h1> youtube videos</h1></div>
+        <div id="yt">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LAm-jaQx4QY?si=WT4j77T9vcJzWEjN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   
+</body>
+</html>
