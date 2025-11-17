@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #e6f4ea;
+        }
+
+        .header {
+            background: #1075e8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .section {
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .add1style {
+            width: 300px;
+            height: 230px;
+            border: 1px ridge black;
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
+            position: absolute;
+            text-align: center;
+            background: white;
+            padding-top: 5px;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            margin-left: 90%;
+            width: 25px;
+            height: 25px;
+            border-radius: 100px;
+            border: none;
+            background: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
+
+       .popup-img {
+            width: 300px;
+            height: 200px;
+            margin-top: px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        var add = document.createElement("div");
+
+        function showadd() {
+            add.className = "add1style";
+            add.style.top = "25%";
+            add.style.left = "30%";
+
+            add.innerHTML = `
+                <button class="close-btn" onclick="closeDialog()">X</button>
+                <img class="popup-img" src="images/flipkart.gif">
+            `;
+
+            document.body.appendChild(add);
+        }
+
+        function closeDialog() {
+            if (document.body.contains(add)) {
+                document.body.removeChild(add);
+            }
+        }
+
+        setTimeout(showadd, 5000);
+
+        setTimeout(closeDialog, 1000);
+
+        document.title = "ready";
+    </script>
+    <div class="header">
+        <h1>Flipkart.com</h1>  
+    </div>
+
+
+</body>
+
+</html>
