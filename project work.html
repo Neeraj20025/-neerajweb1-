@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Page | Sudeep Mishra</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      color: #2c2c54;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 0px 20px;
+    }
+
+    header h1 {
+      font-size: clamp(24px, 5vw, 36px);
+      color: #2c2c54;
+	  padding-top: 20px;
+      font-weight: 700;
+    }
+
+    section {
+      width: 50%;
+      max-width: 400px;
+      margin: 60px auto;
+      background-image: linear-gradient(135deg, #a0d0e8 0%, #c3d2ea 100%);;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: clamp(20px, 3vw, 20px);
+      margin-bottom: 25px;
+      color: #2c2c54;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+	  
+    }
+
+    .portfolio-item {
+      display: block;
+      background: #fcfcf6;
+      border-radius: 12px;
+      overflow: hidden;
+	transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      text-align: center;
+	  cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    }
+
+    .portfolio-item:hover {
+       transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 35px rgba(110, 112, 112, 0.603);
+  background: rgba(255,255,255,0.12);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .portfolio-item p {
+      margin: 15px 0;
+      font-weight: 600;
+      color: #2c2c54;
+      letter-spacing: 0.5px;
+    }
+
+   
+
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 10px;
+      }
+      section {
+        padding: 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        width: 95%;
+        margin: 40px auto;
+      }
+      .portfolio-item img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Project works</h1>
+  </header>
+
+
+ 
+
+  <section id="project">
+    <h2>Digital india </h2>
+    <div class="portfolio-grid">
+
+      <a href="https://neeraj20025.github.io/AOTM-WORK/" class="portfolio-item">
+        <img src="images/digital india.jfif" alt="Digital indian 2047">
+        <p></p>
+      </a>
+
+
+    </div>
+  </section>
+
+ <section id="project">
+    <h2>Generative AI</h2>
+    <div class="portfolio-grid">
+
+      <a href="https://neeraj20025.github.io/AOTM-11/" class="portfolio-item">
+        <img src="images/Generative AI Development.jfif" alt="Generative AI">
+        <p></p>
+      </a>
+
+
+    </div>
+  </section>
+
+
+
+</body>
+</html>
