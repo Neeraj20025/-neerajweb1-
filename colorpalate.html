@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do While & Color Generator</title>
+
+<style>
+    body{
+        text-align:center;
+        font-family:Arial;
+    }
+
+    .tree1{
+        font-size:140px;
+        width:70%;
+        margin:auto;
+    }
+
+    #main{
+        width:200px;
+        margin:30px auto;
+        padding:10px;
+        box-shadow:10px 10px 10px gray;
+    }
+
+    #main button{
+        width:40px;
+        height:40px;
+        padding:2px;
+        border-radius:30px;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        cursor:pointer;
+        border:none;
+        margin:5px;
+    }
+    
+</style>
+</head>
+
+<body>
+
+<h1 style="background-color:rgb(94, 94, 171) ; ">Working With Do While Loop</h1>
+
+<script>
+/* ----------------
+   DO WHILE LOOP
+
+// divider block
+document.write("<span style='width:100%;background:black;display:block;height:100px;'></span>");
+
+/* ----------------
+   WHILE LOOP WITH RANDOM COLORS
+------------------ */
+document.write("<h2>A CSS color palette refers to a curated set of colors used in web design to establish a consistent visual theme. These colors are applied to various elements of a webpage, such as text, backgrounds, borders, and interactive components.</h2>");
+document.write("<div id='main'>");
+
+var a = 0, r = 0, g = 0, b = 0;
+
+while(a <= 31)
+{
+    r = Math.round(Math.random() * 255);
+    g = Math.round(Math.random() * 255);
+    b = Math.round(Math.random() * 255);
+
+    var mycolor = "rgb(" + r + "," + g + "," + b + ")";
+    
+    document.write("<button onclick='changebackground(this)' style='background:" + mycolor + "'></button>");
+    a++;
+}
+
+document.write("</div>");
+
+/* ----------------
+   CHANGE BACKGROUND FUNCTION
+------------------ */
+function changebackground(t){
+    document.body.style.background = t.style.background;
+}
+
+document.title = "No Error";
+</script>
+
+</body>
+</html>
