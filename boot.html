@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   @import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+        :root {
+            --color: #000000;
+            --transition-time: 0.5s;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Open Sans';
+            background: linear-gradient(to right, #a2d2f5a4, #f9f8f490, #94d8f054, #e5f6f7ab);
+    
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .cards-wrapper {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 4rem;
+            padding: 4rem;
+            margin: 0 auto;
+            width: max-content;
+        }
+
+        .card {
+            font-family: 'Heebo';
+            --bg-filter-opacity: 0.5;
+            background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+            width: 350px;
+             height: 300px;
+            font-size: 1.em;
+            background-size: cover;
+            color: rgb(255, 255, 255);
+            border-radius: 1em;
+            padding: em;
+            /*margin: 2em;*/
+            display: flex;
+            align-items: flex-end;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 5em -1em black;
+            transition: all, var(--transition-time);
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #ccc;
+            text-decoration: none;
+        }
+
+        .card:hover {
+            transform: rotate(0);
+        }
+
+        .card h1 {
+            margin: 0;
+            font-size:20px;
+            
+        }
+
+        .card p {
+            font-size: 0.75em;
+            font-family: 'Open Sans';
+            //margin-top: 0.5em;
+            line-height:1em;
+        }
+
+        .card .tags {
+            display: flex;
+        }
+
+        .card .tags .tag {
+            font-size: 0.75em;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 0.3rem;
+            padding: 0 0.5em;
+            transition: all, var(--transition-time);
+        }
+
+        .card:hover .tags .tag {
+            background: var(--color);
+            color: rgb(255, 255, 255);
+        }
+
+        .card .date {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.75em;
+            padding: 1em;
+            line-height: 1em;
+            opacity: .8;
+        }
+
+        .card:before,
+        .card:after {
+            content: '';
+            transform: scale(0);
+            transform-origin: top left;
+            border-radius: 50%;
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            z-index: -5;
+            transition: all, var(--transition-time);
+            transition-timing-function: ease-in-out;
+        }
+
+        .card:before {
+            background: #6b6b6b;
+            width: 250%;
+            height: 250%;
+        }
+
+        .card:after {
+            background: rgb(233, 229, 229);
+            width: 200%;
+            height: 200%;
+        }
+
+        .card:hover {
+            color: var(--color);
+        }
+
+        .card:hover:before,
+        .card:hover:after {
+            transform: scale(1);
+        }
+
+        .card-grid-space .num {
+            font-size: 3em;
+            margin-bottom: 1.2rem;
+            margin-left: 1rem;
+        }
+
+        .info {
+            font-size: 1.2em;
+            display: flex;
+            padding: 1em 3em;
+            height: 3em;
+
+        }
+
+        .info img {
+            height: 3em;
+            margin-right: 0.5em;
+        }
+
+        .info h1 {
+            font-size: 1em;
+            font-weight: small;
+        }
+
+        /* MEDIA QUERIES */
+        @media screen and (max-width: 1285px) {
+            .cards-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media screen and (max-width: 900px) {
+            .cards-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .info {
+                justify-content: center;
+            }
+
+            .card-grid-space .num {
+                /margin-left: 0;
+                /text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .cards-wrapper {
+                padding: 4rem 2rem;
+            }
+
+            .card {
+                max-width: calc(100vw - 4rem);
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            .info {
+                display: block;
+                text-align: center;
+            }
+
+            .info h1 {
+                margin: 0;
+            }
+        }
+  nav {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position:relative;
+     z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px 10px;
+      transition: 0.3s ease;
+      font-size: 30px;
+      font-weight:600;
+    }
+.section{
+
+//font-size:25px;
+}
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+    PRACTICE PAGES 
+    </ul>
+  </nav>
+  
+  
+    <section class="info ">
+       <h3 style="background-color: tomato; font-size:30px;">BOOTSTRAP</h3>
+    </section> 
+    <section class="cards-wrapper">
+        <div class="card-grid-space">
+            <a class="card" href="image slider.html" style="--bg-img:">
+                <div>
+                    <img src="images/ad23.png" alt=""
+                        style="max-width:100%; max-height:100%; aspect-ratio:3/2; object-fit: cover; object-position: center;">
+                    <h1>BOOTSTRAP BANNER</h1>
+                    <p> </p>
+                    <div class="date"></div>
+                    <div class="tags">
+                        <div class="tag">BOOTSTRAP</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+
+
+      
+</body>
+</html>
