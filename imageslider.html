@@ -4,23 +4,82 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<title>Bootstrap Slider Banner</title>
+<title>Responsive Bootstrap Slider</title>
 
 <style>
+
+/* Responsive Slider Height */
+.carousel-item {
+    height: 90vh;
+    min-height: 400px;
+}
+
 .carousel-item img {
-    height: 500px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
 }
+
+/* Dark overlay for better text visibility */
+.carousel-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+
+/* Caption Styling */
+.carousel-caption {
+    z-index: 2;
+    bottom: 20%;
+}
+
+.carousel-caption h2 {
+    font-size: clamp(18px, 4vw, 42px);
+    font-weight: 600;
+}
+
+.carousel-caption p {
+    font-size: clamp(14px, 2vw, 20px);
+}
+
+/* Section text responsive */
+.paragraph {
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.7;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+
+    .carousel-item {
+        height: 60vh;
+    }
+
+    .carousel-caption {
+        bottom: 15%;
+        padding: 0 15px;
+    }
+
+    .carousel-caption h2 {
+        font-size: 20px;
+    }
+
+    .carousel-caption p {
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- Slider Start -->
-<div id="bannerSlider" class="carousel slide" data-bs-ride="carousel">
+<div id="bannerSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
   <!-- Indicators -->
   <div class="carousel-indicators">
@@ -33,41 +92,37 @@
   <!-- Slides -->
   <div class="carousel-inner">
 
-    <div class="carousel-item active">
+    <div class="carousel-item active position-relative">
       <img src="images/slider1.jpg" class="d-block w-100" alt="Slide 1">
-      <div class="carousel-caption">
-        <h2>"It's not the mountain we conquer, but ourselves.</h2>
+      <div class="carousel-caption text-white">
+        <h2>It's not the mountain we conquer, but ourselves.</h2>
         <p>Focus on hiking</p>
       </div>
     </div>
 
-    <div class="carousel-item">
+    <div class="carousel-item position-relative">
       <img src="images/slider2.jpg" class="d-block w-100" alt="Slide 2">
-      <div class="carousel-caption">
-        <h2> Home to a "Green Mountain</h2>
+      <div class="carousel-caption text-white">
+        <h2>Home to a Green Mountain</h2>
         <p>Highlight the vibrant green summers and fiery autumn colors.</p>
       </div>
     </div>
 
-    <div class="carousel-item">
+    <div class="carousel-item position-relative">
       <img src="images/slider3.jpg" class="d-block w-100" alt="Slide 3">
-      <div class="carousel-caption">
-        <h2>A river never judges the rocks in its path it simply flows around them symbolizing resilience.</h2>
-        <p>river flow or Go with the flow.</p>
+      <div class="carousel-caption text-white">
+        <h2>A river never judges the rocks in its path; it simply flows around them.</h2>
+        <p>Go with the flow.</p>
       </div>
     </div>
 
-
-    <div class="carousel-item">
-      <img src="images/rr2.jpg.jpg" class="d-block w-100" alt="Slide  4">
-      <div class="carousel-caption">
-        <h2>A river never judges the rocks in its path it simply flows around them symbolizing resilience.</h2>
-        <p>river flow or Go with the flow.</p>
+    <div class="carousel-item position-relative">
+      <img src="images/rr2.jpg.jpg" class="d-block w-100" alt="Slide 4">
+      <div class="carousel-caption text-white">
+        <h2>Resilience is found in nature’s rhythm.</h2>
+        <p>Let nature guide your journey.</p>
       </div>
     </div>
-
-    
-    
 
   </div>
 
@@ -84,27 +139,22 @@
 <!-- Slider End -->
 
 
-
-
-
-
- <main class="container my-5">
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <p class="paragraph lead">
-          Nature is a living tapestry woven from countless forms of life, from microscopic organisms to towering trees and roaming animals. Biodiversity strengthens ecosystems by creating balance and resilience, allowing them to adapt to changes such as climate shifts or natural disasters. Forests clean the air, wetlands filter water, and oceans regulate temperature across the planet. Every species plays a role, even those we rarely notice. Protecting this variety of life ensures that natural systems continue to provide food, medicine, and inspiration for future generations.
-        </p>
-      </div>
-      <div class="col-12 col-md-6">
-        <p class="paragraph">
-          Human life is deeply connected to landscapes, whether through farming, travel, or simple moments of reflection. Mountains inspire endurance, rivers teach patience, and open fields remind us of space and possibility. Conservation efforts are not just about saving wildlife; they are about preserving the environments that shape our culture and well-being. By respecting natural resources and learning from nature’s rhythms, people can create a healthier relationship with the Earth and pass on a planet that is both beautiful and livable.
-        </p>
-      </div>
+<!-- Content Section -->
+<main class="container my-5">
+  <div class="row g-4">
+    <div class="col-12 col-md-6">
+      <p class="paragraph lead">
+        Nature is a living tapestry woven from countless forms of life, from microscopic organisms to towering trees and roaming animals. Biodiversity strengthens ecosystems by creating balance and resilience.
+      </p>
     </div>
-  </main>
+    <div class="col-12 col-md-6">
+      <p class="paragraph">
+        Human life is deeply connected to landscapes, whether through farming, travel, or reflection. By respecting natural resources, people can create a healthier relationship with the Earth.
+      </p>
+    </div>
+  </div>
+</main>
 
-
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
