@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Generator</title>
+
+    <style>
+        /* --- CSS Styles --- */
+        body {
+            font-family: Arial, sans-serif;
+           
+  background: #83a4d4;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #b6fbff, #83a4d4);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #b6fbff, #83a4d4);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #numberInput {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        #generateButton {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        #generateButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for the table output */
+        #tableOutput {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            min-height: 100px; /* Ensures space is always visible */
+            text-align: left;
+        }
+
+        .result-line {
+            font-size: 1.1em;
+            padding: 5px 0;
+            border-bottom: 1px solid #ced4da;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .result-line:last-child {
+            border-bottom: none;
+        }
+        
+        .result-line strong {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .placeholder-text {
+            color: #000000;
+            text-align: center;
+            font-style: normal;
+            padding-top: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔢 Multiplication Table</h1>
+
+        <label for="numberInput">Enter a number</label>
+        <input type="number" id="numberInput" min="1" value="7">
+
+        <button id="generateButton">Generate Table </button>
+
+        <div id="tableOutput">
+            <p class="placeholder-text">Enter a number and click 'Generate Table' to see the result.</p>
+        </div>
+    </div>
+
+    <script>
+        /* --- JavaScript Logic --- */
+        document.addEventListener('DOMContentLoaded', () => {
+            const numberInput = document.getElementById('numberInput');
+            const generateButton = document.getElementById('generateButton');
+            const tableOutput = document.getElementById('tableOutput');
+
+            // Attach the event listener to the button
+            generateButton.addEventListener('click', generateTable);
+
+            function generateTable() {
+                // 1. Get the number from the input field
+                const number = parseInt(numberInput.value);
+
+                // 2. Validate the input
+                if (isNaN(number) || number < 1) {
+                    tableOutput.innerHTML = '<p style="color: red;">⚠️ Please enter a valid number greater than 0.</p>';
+                    return; // Stop execution if validation fails
+                }
+
+                // 3. Start building the table HTML
+                let tableHTML = '<div>';
+                const limit = 10; // Fixed limit for this simple generator
+
+                for (let i = 1; i <= limit; i++) {
+                    const result = number * i;
+
+                    // Create a formatted line: X * Y = Z
+                    const line = `<div class="result-line">
+                                      <span>${number} x ${i}</span>
+                                      <strong>${result}</strong>
+                                  </div>`;
+
+                    tableHTML += line;
+                }
+
+                tableHTML += '</div>';
+
+                // 4. Update the tableOutput container with the generated HTML
+                tableOutput.innerHTML = tableHTML;
+            }
+        });
+    </script>
+</body>
+</html>
