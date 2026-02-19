@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -23,47 +23,65 @@
             min-height: 100vh;
             font-family: 'Open Sans';
             background: linear-gradient(to right, #a2d2f5a4, #f9f8f490, #94d8f054, #e5f6f7ab);
-    
         }
+
 
         a {
             color: inherit;
         }
 
+        /* ================= GRID FIX ================= */
+
         .cards-wrapper {
             display: grid;
             justify-content: center;
             align-items: center;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             grid-gap: 4rem;
             padding: 4rem;
             margin: 0 auto;
-            width: max-content;
+            width: 100%;
+            /* max-content hata diya */
+            max-width: 1600px;
+            /* center limit */
         }
 
         .card {
             font-family: 'Heebo';
             --bg-filter-opacity: 0.5;
             background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
-            width: 350px;
-             height: 300px;
-            font-size: 1.em;
+
+            width: 100%;
+            /* 350px hata diya */
+            max-width: 350px;
+            /* design same rahe */
+            height: 300px;
+
+            font-size: 1em;
             background-size: cover;
             color: rgb(255, 255, 255);
             border-radius: 1em;
-            padding: em;
-            /*margin: 2em;*/
             display: flex;
             align-items: flex-end;
-            background-size: cover;
             background-position: center;
             box-shadow: 0 0 5em -1em black;
-            transition: all, var(--transition-time);
+            transition: all var(--transition-time);
             position: relative;
             overflow: hidden;
             border: 5px solid #ccc;
             text-decoration: none;
         }
+
+        .card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
 
         .card:hover {
             transform: rotate(0);
@@ -71,16 +89,14 @@
 
         .card h1 {
             margin: 0;
-            font-size:20px;
-            
+            font-size: 20px;
         }
 
         .card p {
             font-size: 0.75em;
-            font-family: 'Open Sans';
-            //margin-top: 0.5em;
-            line-height:1em;
+            line-height: 1em;
         }
+
 
         .card .tags {
             display: flex;
@@ -109,7 +125,7 @@
             opacity: .8;
         }
 
-        .card:before,
+        
         .card:after {
             content: '';
             transform: scale(0);
@@ -168,89 +184,95 @@
             font-weight: small;
         }
 
-        /* MEDIA QUERIES */
-        @media screen and (max-width: 1285px) {
+
+        nav {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px 10px;
+            font-size: clamp(20px, 3vw, 30px);
+            font-weight: 600;
+        }
+
+        /* Large TV */
+        @media (min-width:1700px) {
             .cards-wrapper {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
-        @media screen and (max-width: 900px) {
+        /* Laptop */
+        @media (max-width:1200px) {
             .cards-wrapper {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Tablet */
+        @media (max-width:900px) {
+            .cards-wrapper {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 3rem;
             }
 
             .info {
                 justify-content: center;
             }
-
-            .card-grid-space .num {
-                /margin-left: 0;
-                /text-align: center;
-            }
         }
 
-        @media screen and (max-width: 500px) {
+        /* Mobile */
+        @media (max-width:600px) {
             .cards-wrapper {
-                padding: 4rem 2rem;
+                grid-template-columns: 1fr;
+                padding: 2rem;
             }
 
             .card {
-                max-width: calc(100vw - 4rem);
+                max-width: 100%;
             }
         }
 
-        @media screen and (max-width: 450px) {
+        /* Small Mobile */
+        @media (max-width:450px) {
             .info {
                 display: block;
                 text-align: center;
             }
-
-            .info h1 {
-                margin: 0;
-            }
         }
-  nav {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      position:relative;
-     z-index: 1000;
-    }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 20px 10px;
-      transition: 0.3s ease;
-      font-size: 30px;
-      font-weight:600;
-    }
-.section{
 
-//font-size:25px;
-}
-      
+
+        .section {
+
+            //font-size:25px;
+        }
     </style>
 
 </head>
 
 
 <body>
-    
 
-  <nav>
-    <ul>
-    PRACTICE PAGES 
-    </ul>
-  </nav>
-  
-  
+
+    <nav>
+        <ul>
+            PRACTICE PAGES
+        </ul>
+    </nav>
+
+
     <section class="info ">
-       <h3 style="background-color: tomato; font-size:30px;">HTML WORK</h3>
-    </section> 
+        <h3 style="background-color: tomato; font-size:30px;">HTML WORK</h3>
+    </section>
     <section class="cards-wrapper">
         <div class="card-grid-space">
             <a class="card" href="index.html" style="--bg-img:">
@@ -269,11 +291,11 @@
 
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="list.html" style="--bg-img:">
                 <div>
                     <img src="images/html list  1.jpeg" alt=""
-                          style="max-width:100%; max-height:100%; aspect-ratio:5.5/3.6; object-fit: cover; object-position: center; background-size: cover;">
+                        style="max-width:100%; max-height:100%; aspect-ratio:5.5/3.6; object-fit: cover; object-position: center; background-size: cover;">
                     <h1>LIST IN HTML</h1>
                     <p> </p>
                     <div class="date"></div>
@@ -285,7 +307,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="photo web.html" style="--bg-img:">
                 <div>
                     <img src="images/download.jfif" alt=""
@@ -301,7 +323,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="shopping site.html" style="--bg-img:">
                 <div>
                     <img src="images/Online shopping concept _ Premium Vector.jfif" alt=""
@@ -317,7 +339,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="Table.html" style="--bg-img:">
                 <div>
                     <img src="images/🧾 How to Create Tables in HTML.jfif" alt=""
@@ -333,7 +355,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="audio.html" style="--bg-img:">
                 <div>
                     <img src="images/audio 1.jfif" alt=""
@@ -349,7 +371,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="iframe.html" style="--bg-img:">
                 <div>
                     <img src="images/iframe.jpg" alt=""
@@ -365,7 +387,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="login page.html" style="--bg-img:">
                 <div>
                     <img src="images/login.jfif" alt=""
@@ -381,7 +403,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="registration.html" style="--bg-img:">
                 <div>
                     <img src="images/regista.jpg" alt=""
@@ -397,7 +419,7 @@
         </div>
 
 
-         <div class="card-grid-space">
+        <div class="card-grid-space">
             <a class="card" href="drawing.html" style="--bg-img:">
                 <div>
                     <img src="images/draw.jpg" alt=""
@@ -414,7 +436,7 @@
 
 
 
-        
+
 
 
         <!-- https://images.unsplash.com/photo-1520839090488-4a6c211e2f94?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=38951b8650067840307cba514b554ba5&auto=format&fit=crop&w=1350&q=80 -->
