@@ -15,31 +15,30 @@
         }
 
         :root {
-            --bg-color: #96baf0;
-            /* pure white hata diya */
-            --text-color: #222;
-            --section-color:#96baf0;
-            --card-bg: #ffffff;
-            --input-bg: #ffffff;
+            --bg-color: #020617;
+            --text-color: #e2e8f0;
+            --section-color: #0b1120;
+            --card-bg: rgba(255, 255, 255, 0.06);
+            --input-bg: #0f172a;
+
+            /* Accent colors */
+            --primary: #6366f1;
+            --secondary: #06b6d4;
+            --accent: #22c55e;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--bg-color);
+            background:
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15), transparent 40%),
+                radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.15), transparent 40%),
+                #020617;
             color: var(--text-color);
             line-height: 1.6;
             transition: 0.3s;
+            margin-top: 90px;
             scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-        }
-
-        body.dark {
-            --bg-color: #0f172a;
-            --text-color: #f1f5f9;
-            --section-color: #1e293b;
-            --card-bg: #1e293b;
-            --input-bg: #1e293b;
+            overflow-x: hidden;
         }
 
 
@@ -50,15 +49,10 @@
             top: 0;
             z-index: 1000;
             padding: 1rem 0;
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(2, 6, 23, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             transition: 0.3s;
-        }
-
-        body.dark header {
-            background: rgba(17, 24, 39, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-container {
@@ -179,6 +173,12 @@
             position: relative;
         }
 
+        button {
+            border: none;
+            outline: none;
+            background: none;
+        }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -214,18 +214,17 @@
             border-radius: 2px;
         }
 
-        /* Hero */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            gap: 60px;
+            flex-wrap: wrap;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             color: white;
             text-align: center;
             padding: 2rem;
-            scroll-snap-align: start;
-            transition: all 0.8s;
         }
 
         body.dark .hero {
@@ -321,6 +320,7 @@
         /* Sections */
         .section {
             padding: 6rem 2rem;
+            scroll-margin-top: 100px;
             max-width: 1200px;
             margin: auto;
             scroll-snap-align: start;
@@ -337,7 +337,10 @@
         .section h2 {
             text-align: center;
             margin-bottom: 3rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            background: linear-gradient(90deg, #6366f1, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Grid and Cards */
@@ -347,13 +350,86 @@
             gap: 2rem;
         }
 
+
+        /* glow effect */
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 40%);
+            top: -50%;
+            left: -50%;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* hover animation */
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* title style */
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* text */
+        .card p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+
         .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-            transform: translateY(0);
+            position: relative;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.4s;
+            overflow: hidden;
+        }
+
+        /* glow effect */
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 40%);
+            top: -50%;
+            left: -50%;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* hover animation */
+        .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* title style */
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* text */
+        .card p {
+            opacity: 0.85;
+            font-size: 0.95rem;
         }
 
         .card:hover {
@@ -361,29 +437,14 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
         }
 
-        body.dark .card {
-            background: #1e293b;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
 
-        .about-section {
-            padding: 80px 10%;
-            background: var(--section-color);
-            color: var(--text-color);
-            text-align: center;
-        }
 
-        .about-section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: inherit;
-        }
 
         .about-section p {
             max-width: 700px;
             margin: auto;
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 2.7;
             color: inherit;
         }
 
@@ -399,9 +460,82 @@
             transition: 0.3s;
         }
 
-        body.dark .about-container {
-            background: rgba(30, 41, 59, 0.6);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+
+        /* About Section Upgrade */
+        .about-card {
+            position: relative;
+            display: flex;
+            gap: 35px;
+            align-items: center;
+            padding: 40px;
+            border-radius: 22px;
+            max-width: 1100px;
+            margin: auto;
+
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.4s ease;
+        }
+
+        /* Gradient Border Effect */
+        .about-card::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 22px;
+            background: linear-gradient(120deg, #6366f1, #22c55e, #0ea5e9);
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .about-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+
+        .about-section {
+            padding: 6rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-card {
+            margin: auto;
+        }
+
+        /* image better */
+
+
+
+        /* text improve */
+        .about-right h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .about-right p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        @media (max-width:768px) {
+            .about-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-left img {
+                width: 160px;
+            }
         }
 
 
@@ -448,10 +582,6 @@
             transform: scale(1);
         }
 
-        body.dark .skill-card {
-            background: #1e293b;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
 
         .skill-card h3 {
             display: flex;
@@ -470,14 +600,10 @@
             margin-top: 10px;
         }
 
-        body.dark .skill-bar {
-            background: #334155;
-        }
-
         .skill-progress {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 6px;
             transition: width 1.5s ease-in-out;
             text-align: right;
@@ -510,24 +636,25 @@
             color: var(--text-color);
         }
 
-        body.dark #contact-form input,
-        body.dark #contact-form textarea {
-            background: #1e293b;
-            color: white;
-            border: 1px solid #334155;
-        }
+
 
 
         .project-card {
             width: 100%;
             max-width: 400px;
             border-radius: 15px;
+
             overflow: hidden;
             background: var(--card-bg);
         }
 
+        .project-card:hover .project-img {
+            transform: scale(1.08);
+        }
+
         .project-img {
             width: 100%;
+            transition: 0.4s ease;
             height: 300px;
             object-fit: cover;
             /* IMPORTANT – image stretch nahi hogi */
@@ -539,7 +666,7 @@
             padding: 0.8rem;
             border: none;
             border-radius: 6px;
-            background: #8b5cf6;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
             font-weight: 600;
             cursor: pointer;
@@ -590,6 +717,183 @@
                 display: flex;
             }
         }
+
+        /* ================= RESPONSIVE DESIGN ================= */
+
+        /* Small Mobile */
+        @media (max-width:480px) {
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                flex-direction: column;
+                height: auto;
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .profile-container {
+                width: 150px;
+                height: 150px;
+                margin: 20px auto;
+            }
+
+            .intro h2 {
+                font-size: 1.8rem;
+            }
+
+            .typing-text {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .about-container {
+                padding: 20px;
+            }
+
+            .project-img {
+                height: 200px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* Mobile */
+        @media (max-width:768px) {
+
+            .hero {
+                flex-direction: column;
+                gap: 20px;
+                height: auto;
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+
+            .intro {
+                text-align: center;
+            }
+
+            .nav-links {
+                top: 70px;
+                right: 10px;
+                width: 200px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section {
+                padding: 60px 20px;
+            }
+        }
+
+
+        /* Tablet */
+        @media (min-width:769px) and (max-width:1024px) {
+
+            .hero {
+                gap: 40px;
+                padding-top: 140px;
+            }
+
+            .intro h2 {
+                font-size: 2.2rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* Laptop */
+        @media (min-width:1025px) and (max-width:1440px) {
+
+            .hero {
+                gap: 60px;
+            }
+
+            .intro h2 {
+                font-size: 2.5rem;
+            }
+
+        }
+
+
+        /* Large Desktop */
+        @media (min-width:1441px) {
+
+            .nav-container {
+                max-width: 1400px;
+            }
+
+            .section {
+                max-width: 1400px;
+            }
+
+            .hero {
+                gap: 80px;
+            }
+
+            .intro h2 {
+                font-size: 3rem;
+            }
+
+            .typing-text {
+                font-size: 1.5rem;
+            }
+
+        }
+
+
+        /* TV / Ultra Wide Screens */
+        @media (min-width:1800px) {
+
+            body {
+                font-size: 18px;
+            }
+
+            .hero {
+                padding-top: 200px;
+                padding-bottom: 200px;
+            }
+
+            .profile-container {
+                width: 260px;
+                height: 260px;
+            }
+
+            .intro h2 {
+                font-size: 3.5rem;
+            }
+
+            .section {
+                padding: 8rem 2rem;
+            }
+
+            .grid {
+                gap: 3rem;
+            }
+
+        }
     </style>
 </head>
 
@@ -604,12 +908,12 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="bothpractice.html" class="nav-link">Practice</a></li>
                     <li><a href="#" class="nav-link">Behance</a></li>
-                     <li><a href="project work.html" class="nav-link">Projects</a></li>
+                    <li><a href="project work.html" class="nav-link">Projects</a></li>
                     <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            <button id="theme-toggle">🌙</button>
+
             <button class="hamburger"><span></span><span></span><span></span></button>
         </div>
     </header>
@@ -618,7 +922,7 @@
         <section id="home" class="hero">
 
             <div class="profile-container">
-                <img src="images/prf1.jpg" alt="Neeraj" class="profile-img">
+                <img src="images/profile.png" alt="Neeraj" class="profile-img">
             </div>
 
 
@@ -633,15 +937,27 @@
             </div>
             </div>
         </section>
-
         <section id="about" class="about-section">
-            <div class="about-container">
-                <h2>About Me</h2>
-                <p>
-                    I am a passionate Web Developer who loves creating modern and responsive websites.
-                    I enjoy working with HTML, CSS, JavaScript and building creative UI designs.
-                    I focus on clean design, smooth animations, and user-friendly experiences.
-                </p>
+            <div class="about-card">
+
+                <div class="about-left">
+
+                </div>
+
+                <div class="about-right">
+                    <h2>About Me</h2>
+                    <p>
+                        I am a passionate Web Developer who loves creating modern and responsive websites.
+                        I enjoy working with HTML, CSS, JavaScript and building creative UI designs.
+                        I focus on clean design, smooth animations, and user-friendly experiences.
+                    </p>
+
+                    <p>
+                        My goal is to build visually appealing and high-performance websites
+                        that provide the best user experience.
+                    </p>
+                </div>
+
             </div>
         </section>
 
@@ -753,9 +1069,6 @@
 
 
 
-        // Theme toggle
-        const toggle = document.getElementById("theme-toggle");
-        toggle.addEventListener("click", () => { document.body.classList.toggle("dark"); toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙"; });
 
         // Hamburger
         const hamburger = document.querySelector(".hamburger");
@@ -798,4 +1111,3 @@
 </body>
 
 </html>
-
