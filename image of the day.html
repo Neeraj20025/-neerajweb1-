@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive Image of the Day</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#0f172a;
+color:white;
+font-family:Arial;
+}
+
+/* card style */
+
+.day-card{
+background:#ece9e9;
+border:none;
+border-radius:15px;
+padding:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* image animation */
+
+.day-img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:10px;
+
+opacity:0;
+transform:scale(0.9);
+animation:fadeZoom 1s forwards;
+}
+
+@keyframes fadeZoom{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+@media(max-width:576px){
+.day-img{
+height:220px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container py-5">
+
+<div class="row justify-content-center">
+
+<div class="col-12 col-sm-10 col-md-8 col-lg-6">
+
+<div class="card day-card text-center">
+
+<h2 class="mb-3">📷 Image of the Day</h2>
+
+<h5 id="dayName"></h5>
+
+<img id="dailyImage" class="day-img mt-3 img-fluid">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* day names */
+
+let days=[
+"Sunday",
+"Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday",
+"Saturday"
+]
+
+/* images */
+
+let images={
+Sunday:"https://picsum.photos/id/1015/600/400",
+Monday:"https://picsum.photos/id/1025/600/400",
+Tuesday:"https://picsum.photos/id/1035/600/400",
+Wednesday:"https://picsum.photos/id/1045/600/400",
+Thursday:"https://picsum.photos/id/1055/600/400",
+Friday:"https://picsum.photos/id/1065/600/400",
+Saturday:"https://picsum.photos/id/1075/600/400"
+}
+
+let today=new Date().getDay()
+
+let todayName=days[today]
+
+document.getElementById("dayName").innerText="Today is: "+todayName
+
+document.getElementById("dailyImage").src=images[todayName]
+
+</script>
+
+</body>
+</html>
+
