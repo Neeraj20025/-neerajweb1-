@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Responsive jQuery Hide Show</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+
+body{
+background:linear-gradient(135deg,#b4b3b3,#1e293b);
+color:rgb(255, 255, 255);
+font-family:Arial;
+}
+
+/* card style */
+
+.main-card{
+background:#ffffff;
+border-radius:15px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* heading */
+
+.title{
+font-weight:bold;
+cursor:pointer;
+color:#38bdf8;
+}
+
+/* paragraph */
+
+.paragraph{
+line-height:1.7;
+font-size:18px;
+}
+
+/* image */
+
+.content-img{
+border-radius:10px;
+margin-bottom:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container py-5">
+
+<div class="row justify-content-center">
+
+<div class="col-12 col-sm-11 col-md-9 col-lg-7">
+
+<div class="card main-card text-center">
+
+<div class="card-body">
+
+<h1 id="title" class="title display-5 mb-3">
+Nature Article
+</h1>
+
+<img src="images/jq.jfif"
+class="img-fluid content-img">
+
+<p id="textPara" class="paragraph">
+
+Nature is one of the most beautiful and inspiring parts of our world.
+It includes mountains, rivers, forests, animals, and the sky above us.
+Spending time in nature can help people relax, reduce stress, and feel
+more connected to the environment. Many people enjoy activities like
+hiking, camping, and photography to experience the beauty of nature.
+The natural world—from sprawling forests to lofty mountains—is essential to life on Earth, providing oxygen and essential resources.
+It has a unique, calming effect on human minds, offering stress relief and a sense of purpose. While providing, nature can also be powerful and destructive through natural disasters.
+
+</p>
+
+<p class="text-secondary small" style="">
+Click the heading to hide or show the paragraph
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+$(document).ready(function(){
+
+$("#title").click(function(){
+
+$("#textPara").fadeToggle(800)
+
+})
+
+})
+
+</script>
+
+</body>
+</html>
+
