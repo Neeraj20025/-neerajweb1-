@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEPIFY - Shoes Store</title>
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+
+
+
+/* NAVBAR PREMIUM */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 50px;
+position:sticky;
+top:0;
+z-index:1000;
+
+/* GLASS EFFECT */
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* LOGO */
+.logo{
+font-size:26px;
+font-weight:bold;
+color:#00ffcc;
+letter-spacing:2px;
+}
+
+/* LINKS */
+.nav-links{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+.nav-links li{
+cursor:pointer;
+position:relative;
+font-size:15px;
+color:#fff;
+transition:0.3s;
+}
+
+/* HOVER EFFECT */
+.nav-links li:hover{
+color:#00ffcc;
+}
+
+/* ANIMATED UNDERLINE */
+.nav-links li::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#00ffcc;
+transition:0.3s;
+}
+
+.nav-links li:hover::after{
+width:100%;
+}
+
+/* ICONS */
+.nav-icons i{
+margin-left:20px;
+font-size:18px;
+cursor:pointer;
+color:#fff;
+transition:0.3s;
+}
+
+.nav-icons i:hover{
+color:#00ffcc;
+transform:scale(1.2);
+}
+
+/* SCROLL EFFECT (NAV CHANGE) */
+.navbar.scrolled{
+background:#000;
+box-shadow:0 5px 20px rgba(0,0,0,0.5);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.nav-links{
+display:none;
+}
+}
+
+/* SEARCH BOX */
+.search-box{
+position:absolute;
+top:70px;
+right:40px;
+display:none;
+}
+
+.search-box input{
+padding:8px 15px;
+border:none;
+border-radius:20px;
+}
+
+/* HERO */
+.hero{
+height:80vh;
+background:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+background:rgba(0,0,0,0.6);
+padding:20px;
+border-radius:10px;
+}
+
+/* SECTION */
+section{
+padding:50px;
+}
+
+.section-title{
+text-align:center;
+font-size:30px;
+margin-bottom:30px;
+}
+
+/* CARDS */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.card{
+background:#fff;
+border-radius:10px;
+overflow:hidden;
+transition:0.3s;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card h3{
+padding:10px;
+}
+
+.card p{
+padding:0 10px 10px;
+color:#777;
+}
+
+/* ABOUT SECTION */
+.about-section{
+padding:70px 20px;
+background:#f9f9f9;
+}
+
+.about-container{
+display:flex;
+align-items:center;
+gap:40px;
+max-width:1100px;
+margin:auto;
+flex-wrap:wrap;
+}
+
+.about-img img{
+width:400px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.about-text{
+flex:1;
+}
+
+.about-text h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.about-text p{
+color:#555;
+margin-bottom:20px;
+line-height:1.6;
+}
+
+.about-features{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.about-features div{
+background:#fff;
+padding:10px;
+border-radius:8px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.about-features div:hover{
+background:#00ffcc;
+color:#000;
+transform:scale(1.05);
+}
+
+
+
+/* PREMIUM FOOTER */
+.footer{
+background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+color:#bbb;
+padding:70px 20px 30px;
+font-family:'Poppins',sans-serif;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:40px;
+max-width:1300px;
+margin:auto;
+}
+
+
+/* SALE SECTION */
+.sale-section{
+padding:60px 20px;
+background:linear-gradient(135deg,#000,#111);
+color:#fff;
+text-align:center;
+}
+
+.sale-banner h1{
+font-size:40px;
+margin-bottom:10px;
+animation:fadeInUp 1s ease;
+}
+
+.sale-banner p{
+margin-bottom:20px;
+color:#ccc;
+}
+
+.sale-banner button{
+padding:10px 25px;
+border:none;
+background:#00ffcc;
+color:#000;
+border-radius:25px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.sale-banner button:hover{
+background:#fff;
+transform:scale(1.1);
+}
+
+/* SALE CARDS */
+.sale-cards{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.sale-card{
+background:#fff;
+color:#000;
+padding:15px;
+border-radius:12px;
+width:220px;
+transition:0.3s;
+}
+
+.sale-card:hover{
+transform:translateY(-10px) scale(1.05);
+}
+
+.sale-card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.old{
+text-decoration:line-through;
+color:red;
+margin-right:5px;
+}
+/* HEADINGS */
+.footer-col h3{
+color:#fff;
+margin-bottom:20px;
+font-size:18px;
+letter-spacing:1px;
+position:relative;
+}
+
+/* underline effect */
+.footer-col h3::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-8px;
+width:40px;
+height:2px;
+background:#00ffcc;
+transition:0.3s;
+}
+
+.footer-col:hover h3::after{
+width:70px;
+}
+
+/* LIST */
+.footer-col ul{
+list-style:none;
+}
+
+.footer-col ul li{
+margin-bottom:10px;
+cursor:pointer;
+font-size:14px;
+transition:all 0.3s ease;
+display:inline-block;
+}
+
+/* HOVER EFFECT */
+.footer-col ul li:hover{
+color:#00ffcc;
+transform:translateX(8px);
+letter-spacing:0.5px;
+}
+
+/* CONTACT */
+.contact p{
+font-size:14px;
+line-height:1.7;
+margin-bottom:12px;
+}
+
+/* BOTTOM */
+.footer-bottom{
+text-align:center;
+margin-top:50px;
+border-top:1px solid rgba(255,255,255,0.1);
+padding-top:20px;
+font-size:14px;
+color:#888;
+}
+
+/* HOVER GLOW EFFECT */
+.footer-col{
+transition:transform 0.3s ease, box-shadow 0.3s ease;
+padding:10px;
+border-radius:10px;
+}
+
+.footer-col:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,255,204,0.1);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.footer{
+padding:50px 15px;
+}
+
+.footer-container{
+gap:25px;
+}
+
+.footer-col h3{
+font-size:16px;
+}
+
+.footer-col ul li{
+font-size:13px;
+}
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+/* NAV HOVER */
+nav ul li{
+position:relative;
+}
+
+nav ul li::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#00ffcc;
+transition:0.4s;
+}
+
+nav ul li:hover::after{
+width:100%;
+}
+
+/* CARD ANIMATION FIX */
+.card{
+transform:translateY(40px);
+opacity:0;
+transition:0.6s ease;
+}
+
+.card.show{
+transform:translateY(0);
+opacity:1;
+}
+
+/* SEARCH FIX */
+.search-box{
+opacity:0;
+transform:translateY(-10px);
+pointer-events:none;
+transition:0.4s;
+}
+
+.search-box.active{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
+}
+
+/* ULTRA SMOOTH SLIDER */
+.slider{
+overflow:hidden;
+position:relative;
+width:100%;
+}
+
+.slide-track{
+display:flex;
+gap:20px;
+will-change: transform;
+transform: translate3d(0,0,0); /* GPU boost */
+}
+
+.slide-card{
+min-width:200px;
+flex-shrink:0;
+background:#fff;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+padding:10px;
+text-align:center;
+transition:transform 0.3s ease;
+}
+
+.slide-card:hover{
+transform:scale(1.08);
+}
+
+.slide-card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+}
+
+
+@keyframes scrollSlider{
+0%{
+transform:translateX(0);
+}
+100%{
+transform:translateX(-50%);
+}
+}
+
+/* MOBILE NAV */
+.menu-toggle{
+display:none;
+font-size:22px;
+color:#fff;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+.nav-links{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#000;
+flex-direction:column;
+align-items:center;
+gap:20px;
+padding:20px 0;
+display:none;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<div class="logo">STEPIFY</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+<i class="fa fa-bars"></i>
+</div>
+
+<ul class="nav-links">
+<li onclick="scrollToSection('home')">Home</li>
+<li onclick="scrollToSection('men')">Men</li>
+<li onclick="scrollToSection('women')">Women</li>
+<li onclick="scrollToSection('about')">About</li>
+<li onclick="scrollToSection('shop')">Shop</li>
+<li onclick="scrollToSection('sale')">Sale</li>
+</ul>
+
+<div class="nav-icons">
+<i class="fa fa-search" onclick="toggleSearch()"></i>
+<i class="fa fa-user"></i>
+<i class="fa fa-shopping-cart"></i>
+</div>
+
+</nav>
+<div class="search-box" id="searchBox">
+<input type="text" placeholder="Search shoes...">
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+<h1>Step Into Style 👟</h1>
+</div>
+
+<!-- MEN -->
+<section id="men">
+<h2 class="section-title">Men Shoes</h2>
+<div class="cards">
+
+<div class="card">
+<img src="images/e1.jpg">
+<h3>Nike Air</h3>
+<p>₹2999</p>
+</div>
+
+<div class="card">
+<img src="images/e2.jpg">
+<h3>Adidas Run</h3>
+<p>₹3499</p>
+</div>
+
+<div class="card">
+<img src="images/e3.jpg">
+<h3>Puma X</h3>
+<p>₹2799</p>
+</div>
+
+</div>
+</section>
+
+<!-- WOMEN -->
+<section id="women">
+<h2 class="section-title">Women Shoes</h2>
+<div class="cards">
+
+<div class="card">
+<img src="images/e4.jpg">
+<h3>Pink Runner</h3>
+<p>₹2599</p>
+</div>
+
+<div class="card">
+<img src="images/e5.jpg">
+<h3>White Sneaker</h3>
+<p>₹3199</p>
+</div>
+
+<div class="card">
+<img src="images/e6.jpg">
+<h3>Sporty Fit</h3>
+<p>₹2899</p>
+</div>
+
+</div>
+</section>
+
+
+<section class="slider-section">
+<h2 class="section-title">Trending Now 🔥</h2>
+
+<div class="slider">
+<div class="slide-track">
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772"loading="lazy">>
+<h4>Air Max</h4>
+<p>₹2999</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5"loading="lazy">
+<h4>Sport Pro</h4>
+<p>₹3499</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552"loading="lazy">
+<h4>Runner X</h4>
+<p>₹2799</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1584735175315-9d5df23860e6"loading="lazy">
+<h4>White Classic</h4>
+<p>₹3199</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77"loading="lazy">
+<h4>Pink Fit</h4>
+<p>₹2599</p>
+</div>
+
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772"loading="lazy">
+<h4>Air Max</h4>
+<p>₹2999</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5"loading="lazy">
+<h4>Sport Pro</h4>
+<p>₹3499</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1519741497674-611481863552"loading="lazy">
+<h4>Runner X</h4>
+<p>₹2799</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1584735175315-9d5df23860e6"loading="lazy">
+<h4>White Classic</h4>
+<p>₹3199</p>
+</div>
+
+<div class="slide-card">
+<img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77"loading="lazy">
+<h4>Pink Fit</h4>
+<p>₹2599</p>
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<section id="sale" class="sale-section">
+
+<div class="sale-banner">
+<h1>🔥 Mega Sale 50% OFF</h1>
+<p>Limited Time Offer – Grab Your Favorite Shoes Now</p>
+<button>Shop Now</button>
+</div>
+
+<div class="sale-cards">
+
+<div class="sale-card">
+<img src="images/e7.jpg">
+<h3>Nike Air Max</h3>
+<p><span class="old">₹4999</span> ₹2499</p>
+</div>
+
+<div class="sale-card">
+<img src="images/e10.jpg">
+<h3>Adidas Boost</h3>
+<p><span class="old">₹5999</span> ₹2999</p>
+</div>
+
+<div class="sale-card">
+<img src="images/e9.jpg">
+<h3>Puma Sport</h3>
+<p><span class="old">₹3999</span> ₹1999</p>
+</div>
+
+</div>
+
+</section>
+<section id="about" class="about-section">
+
+<div class="about-container">
+
+<div class="about-img">
+<img src="https://images.unsplash.com/photo-1521334884684-d80222895322">
+</div>
+
+<div class="about-text">
+<h2>About STEPIFY 👟</h2>
+<p>
+STEPIFY is a modern footwear brand delivering stylish, comfortable and premium quality shoes.
+We focus on performance, design and affordability.
+</p>
+
+<div class="about-features">
+<div>✔ Premium Quality</div>
+<div>✔ Trendy Designs</div>
+<div>✔ Fast Delivery</div>
+<div>✔ Best Prices</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+<footer class="footer">
+<div class="footer-container">
+
+<!-- COLUMN 1 -->
+<div class="footer-col">
+<h3>Info</h3>
+<ul>
+<li>Track Your Order</li>
+<li>Our Blog</li>
+<li>Privacy Policy</li>
+<li>Shipping</li>
+<li>Contact Us</li>
+</ul>
+</div>
+
+<!-- COLUMN 2 -->
+<div class="footer-col">
+<h3>Help</h3>
+<ul>
+<li>Community</li>
+<li>About</li>
+<li>History</li>
+<li>Our Team</li>
+<li>Services</li>
+</ul>
+</div>
+
+<!-- COLUMN 3 -->
+<div class="footer-col">
+<h3>Company</h3>
+<ul>
+<li>Manufacture</li>
+<li>Wholesale</li>
+<li>Retail</li>
+<li>Women Shoes</li>
+</ul>
+</div>
+
+<!-- COLUMN 4 -->
+<div class="footer-col">
+<h3>Popular</h3>
+<ul>
+<li>Prices Drop</li>
+<li>New Products</li>
+<li>Best Sales</li>
+<li>Stores</li>
+<li>Login</li>
+<li>Cart</li>
+</ul>
+</div>
+
+<!-- COLUMN 5 -->
+<div class="footer-col">
+<h3>More</h3>
+<ul>
+<li>Mens Collection</li>
+<li>Delivery</li>
+<li>About Us</li>
+<li>Shoes</li>
+<li>Contact Us</li>
+</ul>
+</div>
+
+<!-- CONTACT -->
+<div class="footer-col contact">
+<h3>Get In Touch</h3>
+<p>Stylish Online Store<br>123 Main Street, Toulouse - France</p>
+<p><b>Call:</b> (+33) 800 456 789</p>
+<p><b>Email:</b> contact@yourwebsite.com</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 STEPIFY | All Rights Reserved</p>
+</div>
+</footer>
+<script>
+
+
+
+// SEARCH TOGGLE
+function toggleSearch(){
+let box = document.getElementById("searchBox");
+box.classList.toggle("active");
+}
+
+// SCROLL TO SECTION
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({
+behavior:"smooth"
+});
+}
+
+// SCROLL ANIMATION FIX
+window.addEventListener("load", () => {
+let cards = document.querySelectorAll(".card");
+
+function reveal(){
+let screenHeight = window.innerHeight;
+
+cards.forEach(card => {
+let position = card.getBoundingClientRect().top;
+
+if(position < screenHeight - 80){
+card.classList.add("show");
+}
+});
+}
+
+window.addEventListener("scroll", reveal);
+reveal(); // first load pe bhi run hoga
+});
+
+const track = document.querySelector(".slide-track");
+
+let position = 0;
+let speed = 0.3; // slow = smoother
+
+function animate(){
+position -= speed;
+
+/* smooth infinite loop */
+if(position <= -track.scrollWidth / 2){
+position = 0;
+}
+
+/* GPU transform */
+track.style.transform = `translate3d(${position}px,0,0)`;
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+/* HOVER PAUSE */
+track.addEventListener("mouseenter", () => speed = 0);
+track.addEventListener("mouseleave", () => speed = 0.3);
+
+
+
+track.addEventListener("mouseenter", () => speed = 0);
+track.addEventListener("mouseleave", () => speed = 0.5);
+</script>
+</body>
+</html>
