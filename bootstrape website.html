@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cake Landing Page</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fa;
+  scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+  background: rgba(0,0,0,0.8) !important;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ff6b6b;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1542826438-bd32f43d626f') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  animation: fadeUp 1s ease;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  animation: fadeUp 1.5s ease;
+}
+
+/* BUTTONS */
+.btn {
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #ff6b6b, #ff9f43);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.btn-success {
+  background: linear-gradient(45deg, #ff9f43, #ff6b6b);
+  border: none;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+}
+
+.btn-outline-primary:hover {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  color: #fff;
+}
+
+/* CARDS */
+.card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.4s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.card img {
+  height: 220px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card-body h5 {
+  font-weight: 600;
+}
+
+.card-body p {
+  color: #777;
+}
+
+/* CARD OVERLAY (cool effect) */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.3));
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* SALE SECTION */
+#sale {
+  background: linear-gradient(45deg, #ff6b6b, #ff9f43);
+  color: white;
+}
+
+/* BLOG */
+.blog {
+  transition: 0.3s;
+}
+
+.blog:hover {
+  transform: translateY(-10px);
+}
+
+/* ACCORDION CONTENT */
+.extra-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+
+/* FORM */
+form input, form textarea {
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 10px rgba(255,107,107,0.2);
+}
+
+/* FOOTER */
+footer {
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Cake World</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cakes">Cakes</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sale">Sale</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Banner -->
+<section id="home" class="hero">
+  <div>
+    <h1>Fresh & Delicious Cakes</h1>
+    <p>Made with love for every celebration</p>
+    <a href="#cakes" class="btn btn-primary btn-lg">Explore Cakes</a>
+  </div>
+</section>
+
+<!-- Cakes Section -->
+<section id="cakes" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Cakes</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" class="card-img-top">
+          <div class="card-body">
+            <h5>Chocolate Cake</h5>
+            <p>Rich chocolate flavor</p>
+            <button class="btn btn-success w-100">Order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" class="card-img-top">
+          <div class="card-body">
+            <h5>Strawberry Cake</h5>
+            <p>Fresh & creamy</p>
+            <button class="btn btn-success w-100">Order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" class="card-img-top">
+          <div class="card-body">
+            <h5>Vanilla Cake</h5>
+            <p>Classic taste</p>
+            <button class="btn btn-success w-100">Order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" class="card-img-top">
+          <div class="card-body">
+            <h5>Red Velvet</h5>
+            <p>Soft & delicious</p>
+            <button class="btn btn-success w-100">Order</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Sale Section -->
+<section id="sale" class="bg-warning text-center py-5">
+  <div class="container">
+    <h2>Special Offer 🎉</h2>
+    <p>Get 20% OFF on all cakes this weekend!</p>
+    <button class="btn btn-dark">Grab Now</button>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2>About Us</h2>
+    <p>We bake the best cakes using fresh ingredients.</p>
+    <a href="#about-more" class="btn btn-primary mt-3">Read More</a>
+  </div>
+</section>
+
+<!-- About More Section -->
+<section id="about-more" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">More About Cake World</h2>
+    <p>We create cakes for every occasion with love and creativity.</p>
+  </div>
+</section>
+
+    
+        <section id="blog" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Latest Blogs</h2>
+
+    <div class="row g-4">
+
+      <!-- Blog 1 -->
+      <div class="col-md-4">
+        <div class="card blog">
+          <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40" class="card-img-top">
+          <div class="card-body">
+            <h5>Top 5 Birthday Cakes 🎂</h5>
+            <p>Explore the most trending birthday cakes loved by everyone.</p>
+
+            <div class="extra-content">
+              <p>
+                Chocolate truffle, red velvet, black forest, pineapple delight,
+                and customized photo cakes are among the top choices for birthdays.
+              </p>
+            </div>
+
+            <button class="btn btn-outline-primary read-btn">Read More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog 2 -->
+      <div class="col-md-4">
+        <div class="card blog">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" class="card-img-top">
+          <div class="card-body">
+            <h5>Chocolate Cake Secrets 🍫</h5>
+            <p>Learn how to make perfect chocolate cake at home.</p>
+
+            <div class="extra-content">
+              <p>
+                Always use high-quality cocoa powder and fresh ingredients.
+                Moisture is key, don’t overbake and add a bit of coffee.
+              </p>
+            </div>
+
+            <button class="btn btn-outline-primary read-btn">Read More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog 3 -->
+      <div class="col-md-4">
+        <div class="card blog">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" class="card-img-top">
+          <div class="card-body">
+            <h5>Wedding Cake Ideas 💍</h5>
+            <p>Creative and elegant wedding cake inspirations.</p>
+
+            <div class="extra-content">
+              <p>
+                Multi-layered cakes with floral designs and pastel themes are trending.
+                Customize flavors for each layer to surprise guests.
+              </p>
+            </div>
+
+            <button class="btn btn-outline-primary read-btn">Read More</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <form>
+      <input type="text" class="form-control mb-3" placeholder="Your Name">
+      <input type="email" class="form-control mb-3" placeholder="Your Email">
+      <textarea class="form-control mb-3" rows="4" placeholder="Message"></textarea>
+      <button class="btn btn-primary w-100">Send</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center p-3">
+  <p>© 2026 Cake World</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll(".read-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+
+    const content = this.parentElement.querySelector(".extra-content");
+
+    // Close all others
+    document.querySelectorAll(".extra-content").forEach(el => {
+      if (el !== content) {
+        el.style.maxHeight = null;
+        el.classList.remove("show");
+        el.parentElement.querySelector(".read-btn").innerText = "Read More";
+      }
+    });
+
+    // Toggle current
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      this.innerText = "Read More";
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      this.innerText = "Show Less";
+    }
+
+  });
+});
+</script>
+
+</body>
+</html>
